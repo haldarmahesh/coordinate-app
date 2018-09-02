@@ -13,7 +13,8 @@
     "test": "react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject",
     "lint": "./node_modules/eslint/bin/eslint.js --ext js,jsx src",
-    "lint-fix": "./node_modules/eslint/bin/eslint.js --ext js,jsx src --fix"
+    "lint-fix": "./node_modules/eslint/bin/eslint.js --ext js,jsx src --fix",
+    "precommit": "npm run lint && npm run test"
   },
   "devDependencies": {
     "eslint": "^5.5.0",
@@ -22,7 +23,10 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-promise": "^4.0.0",
-    "eslint-plugin-react": "^7.11.1"
+    "eslint-plugin-react": "^7.11.1",
+    "husky": "^0.14.3"
   },
-  "eslintIgnore": ["registerServiceWorker.js"]
+  "eslintIgnore": [
+    "registerServiceWorker.js"
+  ]
 }

@@ -5,8 +5,6 @@ export default class Coordinate {
     }
 
     if (typeof args[0] === 'number') {
-      // this.x = args[0];
-      // this.y = args[1];
       [this.x, this.y] = args;
     } else if (typeof args[0] === 'undefined') {
       this.x = 0;
