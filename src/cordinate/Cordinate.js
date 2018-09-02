@@ -6,11 +6,11 @@ export default class Coordinate {
 
         this.x = x;
         this.y = y;
-        
+        console.log('ARGS', arguments, typeof arguments[0]);
     }
     valueOf() {
         Coordinate.prototype.cordinates.push(this);
-        return 34;
+        return this;
     }
     toString() {
         return `{${this.x},${this.y}}`;

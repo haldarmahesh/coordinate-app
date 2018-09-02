@@ -5,7 +5,10 @@ import Cordinate from './cordinate/Cordinate';
 
 class App extends Component {
   render() {
-    console.log(new Cordinate(12,23), Cordinate.prototype);
+    let point1 = new Cordinate(1, 1);
+    let point2 = new Cordinate(2, 2);
+    let addedPoint = new Cordinate(point1 + point2);
+    console.log(addedPoint);
     return (
       <div className="App">
         <header className="App-header">
