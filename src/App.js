@@ -5,9 +5,9 @@ import Cordinate from './cordinate/Cordinate';
 
 class App extends Component {
   render() {
-    let point1 = new Cordinate(1, 1);
-    let point2 = new Cordinate(2, 2);
-    let addedPoint = new Cordinate(point1 + point2);
+    const point1 = new Cordinate(1, 1);
+    const point2 = new Cordinate(2, 2);
+    const addedPoint = new Cordinate(point1 + point2);
     console.log(addedPoint);
     return (
       <div className="App">
@@ -16,7 +16,9 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          To get started, edit
+          <code>src/App.js</code>
+          and save to reload.
         </p>
       </div>
     );
