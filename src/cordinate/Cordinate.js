@@ -4,8 +4,13 @@ export default class Coordinate {
             throw new Error('Please pass 2 or less parameters.');
         }
 
-        this.x = x;
-        this.y = y;
+        if (typeof arguments[0] === 'number'){
+            this.x = x;
+            this.y = y;
+        } else if(typeof arguments[0] === 'undefined'){
+            this.x = 0;
+            this.y = 0;
+        }
         console.log('ARGS', arguments, typeof arguments[0]);
     }
     valueOf() {
@@ -17,3 +22,10 @@ export default class Coordinate {
     }
 }
 Coordinate.prototype.cordinates = [];
+Coordinate.prototype.reduceAddition = (coordinates) => {
+    return coordinates.reduce((total, nextCoordinate) => {
+        total.x += nextCoordinate.x;
+        total.y += nextCoordinate.y;
+        return total
+    }, new Coordinate(0, 0));
+}

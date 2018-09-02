@@ -1,4 +1,5 @@
 import Cordinate from './Cordinate';
+import Coordinate from './Cordinate';
 describe('Cordinate setup', () => {
     test('should accept 2 args x and y in constructor', () => {
         let cordinate1 = new Cordinate(10, 20);
@@ -24,6 +25,29 @@ describe('Cordinate setup', () => {
         expect(cordinate1.toString()).toEqual(`{10,20}`);
     });
 });
+fdescribe('Coordinate reduce addition method', () => {
+    beforeEach(() => {
+        Cordinate.prototype.cordinates = [];
+    })
+    test('should reduce the array of Coordinates', () => {
+        let coordinate1 = new Coordinate(1, 10);
+        let coordinate2 = new Coordinate(2, 2);
+        let coordinate3 = new Coordinate(3, 3);
+        let arr = [coordinate1, coordinate2, coordinate3];
+        let newCoordinate = Cordinate.prototype.reduceAddition(arr);
+        expect(newCoordinate.x).toEqual(6);
+        expect(newCoordinate.y).toEqual(15);
+    });
+    test('should reduce and sum all the cordinates when no params are passed', () => {
+        let coordinate1 = new Coordinate();
+        let coordinate2 = new Coordinate(1, 3);
+        let coordinate3 = new Coordinate(4, 2);
+        let arr = [coordinate1, coordinate2, coordinate3];
+        let newCoordinate = Coordinate.prototype.reduceAddition(arr);
+        expect(newCoordinate.x).toEqual(5);
+        expect(newCoordinate.y).toEqual(5);
+    })
+})
 
 describe('Override + operator to add Cordinate obj', () => {
     beforeEach(() => {
@@ -43,5 +67,5 @@ describe('Override + operator to add Cordinate obj', () => {
     expect(addedPoint.cordinates.length).toEqual(2);
     expect(addedPoint.cordinates[0].x).toEqual(1);
     expect(addedPoint.cordinates[1].y).toEqual(2);
-  })
+  });
 })
