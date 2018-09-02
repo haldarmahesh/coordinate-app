@@ -25,7 +25,8 @@ describe('Cordinate setup', () => {
     expect(cordinate1.toString()).toEqual('{10,20}');
   });
 });
-fdescribe('Coordinate reduce addition method', () => {
+
+describe('Coordinate reduce addition method', () => {
   beforeEach(() => {
     Cordinate.prototype.cordinates = [];
   });
@@ -67,5 +68,34 @@ describe('Override + operator to add Cordinate obj', () => {
     expect(addedPoint.cordinates.length).toEqual(2);
     expect(addedPoint.cordinates[0].x).toEqual(1);
     expect(addedPoint.cordinates[1].y).toEqual(2);
+  });
+  test('should return the added cordinates when Obj is added', () => {
+    const point1 = new Cordinate(1, 1);
+    const point2 = new Cordinate(2, 2);
+    const point3 = new Cordinate(3, 3);
+    const addedPoint = new Cordinate(point1 + point2 + point3);
+    expect(addedPoint.x).toEqual(6);
+    expect(addedPoint.y).toEqual(6);
+  });
+  test('should return the added cordinates when Obj is added', () => {
+    const addedPoint = new Cordinate(new Cordinate(10, 2) + new Cordinate(2, 1)
+      + new Cordinate(3, 4));
+    expect(addedPoint.x).toEqual(15);
+    expect(addedPoint.y).toEqual(7);
+  });
+  test('should return the added cordinates in str format when Obj is added and toStr is called', () => {
+    const addedPoint = new Cordinate(new Cordinate(10, 2) + new Cordinate(2, 1)
+      + new Cordinate(3, 4));
+    expect(addedPoint.toString()).toEqual('{15,7}');
+  });
+});
+describe('Static method matcher', () => {
+  test('should return true when correct this Obj toString is passed', () => {
+    const validToString = '{12,23}';
+    expect(Cordinate.matchesToString(validToString)).toEqual(true);
+  });
+  test('should return false when wrong this Obj toString is passed', () => {
+    const invalid = 'asdasdasda';
+    expect(Cordinate.matchesToString(invalid)).toEqual(false);
   });
 });

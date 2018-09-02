@@ -1,16 +1,22 @@
 export default class Coordinate {
   constructor(...args) {
-    if (arguments.length > 2) {
+    if (args.length > 2) {
       throw new Error('Please pass 2 or less parameters.');
-    }
-
-    if (typeof args[0] === 'number') {
+    } else if (args.length === 2) {
       [this.x, this.y] = args;
-    } else if (typeof args[0] === 'undefined') {
+    } else if (args.length === 1) {
+      if (typeof args[0] === 'number') {
+        [this.x] = args;
+        this.y = 0;
+      } else if (typeof args[0] === 'string' && Coordinate.matchesToString(args[0])) {
+        const newCoordinate = this.reduceAddition(Coordinate.prototype.cordinates);
+        this.x = newCoordinate.x;
+        this.y = newCoordinate.y;
+      }
+    } else {
       this.x = 0;
       this.y = 0;
     }
-    console.log('ARGS', args, typeof args[0]);
   }
 
   valueOf() {
@@ -20,6 +26,11 @@ export default class Coordinate {
 
   toString() {
     return `{${this.x},${this.y}}`;
+  }
+
+  static matchesToString(str) {
+    const TO_STR_REGEX = /^{.*}$/;
+    return TO_STR_REGEX.test(str);
   }
 }
 Coordinate.prototype.cordinates = [];
