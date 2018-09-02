@@ -26,11 +26,22 @@ describe('Cordinate setup', () => {
 });
 
 describe('Override + operator to add Cordinate obj', () => {
+    beforeEach(() => {
+        Cordinate.prototype.cordinates = [];
+    })
   test('should return the added cordinates when Obj is added', () => {
       let point1 = new Cordinate(1, 1);
       let point2 = new Cordinate(2, 2);
       let addedPoint = new Cordinate(point1 + point2);
       expect(addedPoint.x).toEqual(3);
       expect(addedPoint.y).toEqual(3);
+  });
+  test('should push the cordinate object in prototype', () => {
+    let point1 = new Cordinate(1, 1);
+    let point2 = new Cordinate(2, 2);
+    let addedPoint = new Cordinate(point1 + point2);
+    expect(addedPoint.__proto__.cordinates.length).toEqual(2);
+    expect(addedPoint.__proto__.cordinates[0].x).toEqual(1);
+    expect(addedPoint.__proto__.cordinates[1].y).toEqual(2);
   })
 })
