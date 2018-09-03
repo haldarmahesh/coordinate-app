@@ -53,7 +53,9 @@ class App extends Component {
     const component = (
       <div className="row mt-2">
         <div className="col-md-4">
-          Add new Coordinate points as argument
+          Add
+          <b> minimum two </b>
+          Coordinate points as argument
         </div>
         <div className="col-md-2">
           <div className="row">
@@ -93,8 +95,35 @@ class App extends Component {
     return isCoordinateAdded ? component : null;
   }
 
+  renderExecuteButton() {
+    const { isCoordinateAdded, coordinatesArr } = this.state;
+    const button = (
+      <div className="row mt-2">
+        <div className="col-md-4">
+          <button type="button" className="btn btn-danger">
+            + Execute
+          </button>
+        </div>
+      </div>
+    );
+    return isCoordinateAdded && coordinatesArr.length > 1 ? button : null;
+  }
+
+  renderCoordinateStrParams() {
+    const { isCoordinateAdded } = this.state;
+    const alertBox = (
+      <div className="row mt-2">
+        <div className="col-md-8">
+          <div className="alert alert-info">
+            {this.renderCoordinate()}
+          </div>
+        </div>
+      </div>
+    );
+    return isCoordinateAdded ? alertBox : null;
+  }
+
   render() {
-    console.log('this', this);
     return (
       <div className="container">
         <div className="row">
@@ -114,13 +143,8 @@ class App extends Component {
           </div>
         </div>
         {this.renderCreateNewPoint()}
-        <div className="row mt-2">
-          <div className="col-md-8">
-            <div className="alert alert-info">
-              {this.renderCoordinate()}
-            </div>
-          </div>
-        </div>
+        {this.renderCoordinateStrParams()}
+        {this.renderExecuteButton()}
       </div>
     );
   }

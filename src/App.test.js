@@ -124,6 +124,40 @@ describe('App component setup', () => {
     wrapper.instance().handleNewCoordinate();
     expect(typeof wrapper.instance().renderCreateNewPoint()).toEqual('object');
   });
+  test('should return null when renderExexute button is called, given no coordinate is added', () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper.instance().renderExecuteButton()).toEqual(null);
+  });
+  test('should return null when renderExexute button is called, given one coordinate is added', () => {
+    const wrapper = shallow(<App />);
+    wrapper.instance().handleNewCoordinate();
+    const point1 = new Coordinate(2, 3);
+    wrapper.setState({
+      coordinatesArr: [point1]
+    });
+    expect(wrapper.instance().renderExecuteButton()).toEqual(null);
+  });
+  test('should return object when renderExexute button is called, given min 2 coordinates are added', () => {
+    const wrapper = shallow(<App />);
+    const point1 = new Coordinate(2, 3);
+    const point2 = new Coordinate(3, 4);
+    wrapper.setState({
+      coordinatesArr: [point1, point2]
+    });
+
+    expect(typeof wrapper.instance().renderExecuteButton()).toEqual('object');
+  });
+
+  test('should return null when renderCoordinateStrParams when no coordinate is added', () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper.instance().renderCoordinateStrParams()).toEqual(null);
+  });
+  test('should return object when renderCoordinateStrParams when a coordinate is added', () => {
+    const wrapper = shallow(<App />);
+    wrapper.instance().handleNewCoordinate();
+    expect(typeof wrapper.instance().renderCoordinateStrParams()).toEqual('object');
+  });
+
   test('should return reduced string from the objects ', () => {
     const wrapper = shallow(<App />);
     const point1 = new Coordinate(2, 3);
