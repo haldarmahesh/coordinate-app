@@ -13,6 +13,10 @@ To run the test cases run `npm run test`
 # Linting
 To check the lint you can run `npm run lint`
 
+# Create new Coordinate and override +
+ 
+Please use `src/coordinate/Coordinate.js` class to create new Coordinates and use `+` operator.
+
 # React app
 To start the app on localhost run `npm run start`
 
