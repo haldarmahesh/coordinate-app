@@ -5,7 +5,9 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      isCoordinateAdded: false
+      isCoordinateAdded: false,
+      x: null,
+      y: null
     };
   }
 
@@ -15,8 +17,14 @@ class App extends Component {
     });
   }
 
-  handleNewCoordinatePoint() {
-    this.setState({});
+  handleChangeCoordinatePoint(event, type) {
+    this.setState({
+      [type]: event.currentTarget.value
+    });
+  }
+
+  handleAddNewCoordinatePoint() {
+    this.setState();
   }
 
   renderCoordinate() {
@@ -25,7 +33,7 @@ class App extends Component {
   }
 
   renderCreateNewPoint() {
-    const { isCoordinateAdded } = this.state;
+    const { isCoordinateAdded, x, y } = this.state;
     const component = (
       <div className="row mt-2">
         <div className="col-md-4">
@@ -39,7 +47,7 @@ class App extends Component {
                 <div className="input-group-prepend">
                   <span className="input-group-text">X</span>
                 </div>
-                <input type="text" className="form-control" aria-label="Amount (to the nearest dollar)" />
+                <input defaultValue={x} onChange={(event) => this.handleChangeCoordinatePoint(event, 'x')} type="text" className="form-control" />
               </div>
             </div>
             <div className="col-md-12">
@@ -48,7 +56,7 @@ class App extends Component {
                 <div className="input-group-prepend">
                   <span className="input-group-text">Y</span>
                 </div>
-                <input type="text" className="form-control" aria-label="Amount (to the nearest dollar)" />
+                <input type="text" defaultValue={y} onChange={(event) => this.handleChangeCoordinatePoint(event, 'y')} className="form-control" />
               </div>
             </div>
             <div className="col-md-12">
@@ -56,7 +64,7 @@ class App extends Component {
                 <button
                   className="btn btn-warning btn-block"
                   type="button"
-                  onClick={() => this.handleNewCoordinatePoint()}
+                  onClick={() => this.handleAddNewCoordinatePoint()}
                 >
                   Add
                 </button>
@@ -70,6 +78,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('this', this);
     return (
       <div className="container">
         <div className="row">

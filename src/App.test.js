@@ -19,6 +19,31 @@ describe('App component setup', () => {
     const wrapper = shallow(<App />);
     expect(wrapper.state().isCoordinateAdded).toEqual(false);
   });
+  test('should start with null Coordinates values', () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper.state().isCoordinateAdded).toEqual(false);
+    expect(wrapper.state().x).toEqual(null);
+    expect(wrapper.state().y).toEqual(null);
+  });
+  test('should update the value in x and y on change', () => {
+    const fakeEvent = {
+      currentTarget: {
+        value: 34
+      }
+    };
+    const fakeEvent2 = {
+      currentTarget: {
+        value: 12
+      }
+    };
+    const wrapper = shallow(<App />);
+    expect(wrapper.state().x).toEqual(null);
+    expect(wrapper.state().y).toEqual(null);
+    wrapper.instance().handleChangeCoordinatePoint(fakeEvent, 'x');
+    wrapper.instance().handleChangeCoordinatePoint(fakeEvent2, 'y');
+    expect(wrapper.state().x).toEqual(34);
+    expect(wrapper.state().y).toEqual(12);
+  });
   test('should return null when isCoordinate is false and renderCoordinte is called', () => {
     const wrapper = shallow(<App />);
     expect(wrapper.instance().renderCoordinate()).toEqual(null);
