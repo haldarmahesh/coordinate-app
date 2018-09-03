@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './App.css';
 import Coordinate from './coordinate/Coordinate';
 
@@ -12,6 +12,7 @@ class App extends Component {
       y: null,
       executeResult: ''
     };
+    this.myRef = React.createRef();
   }
 
   handleNewCoordinate() {
@@ -58,7 +59,17 @@ class App extends Component {
 
   renderCoordinate() {
     const { isCoordinateAdded } = this.state;
-    return isCoordinateAdded ? `new Coordinate(${this.reduceArgsToString()} + ..)` : null;
+    const component = (
+      <Fragment>
+        new&nbsp;
+        <b>Coordinate(</b>
+        <span>
+          {this.reduceArgsToString()}
+        &nbsp;+...)
+        </span>
+      </Fragment>
+    );
+    return isCoordinateAdded ? component : null;
   }
 
   renderCreateNewPoint() {
@@ -78,7 +89,7 @@ class App extends Component {
                 <div className="input-group-prepend">
                   <span className="input-group-text">X</span>
                 </div>
-                <input value={x || ''} onChange={(event) => this.handleChangeCoordinatePoint(event, 'x')} type="text" className="form-control" />
+                <input ref={this.myRef} value={x || ''} onChange={(event) => this.handleChangeCoordinatePoint(event, 'x')} type="text" className="form-control" />
               </div>
             </div>
             <div className="col-md-12">
@@ -128,7 +139,7 @@ class App extends Component {
       <div className="row mt-2">
         <div className="col-md-8">
           <div className="alert alert-info">
-            {this.renderCoordinate()}
+            <Fragment>{this.renderCoordinate()}</Fragment>
           </div>
         </div>
       </div>
@@ -141,9 +152,11 @@ class App extends Component {
     const component = (
       <div className="row mt-2">
         <div className="col-md-4">
+          <div className="alert alert-success" role="alert">
         Result is
-          <br />
-          { executeResult }
+            <br />
+            <b>{executeResult}</b>
+          </div>
         </div>
       </div>
     );
@@ -169,8 +182,9 @@ class App extends Component {
             </div>
           </div>
         </div>
+        <hr />
         {this.renderCreateNewPoint()}
-        {this.renderCoordinateStrParams()}
+        <div>{this.renderCoordinateStrParams()}</div>
         {this.renderExecuteButton()}
         {this.renderShowResult()}
       </div>

@@ -108,7 +108,7 @@ describe('App component setup', () => {
     wrapper.setState({
       isCoordinateAdded: true
     });
-    expect(typeof wrapper.instance().renderCoordinate()).toEqual('string');
+    expect(typeof wrapper.instance().renderCoordinate()).toEqual('object');
   });
   test('should set the state value isCoordinateAdded to true when handle is called', () => {
     const wrapper = shallow(<App />);
