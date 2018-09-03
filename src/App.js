@@ -165,7 +165,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container mt-3">
         <div className="row">
           <div className="col-md-4">
             Start by creating new Coordinate
