@@ -15,9 +15,9 @@ export default class Cordinate {
         [this.x] = args;
         this.y = 0;
       } else if (typeof args[0] === 'string' && Cordinate.matchesToString(args[0])) {
-        const newCoordinate = this.reduceAddition(Cordinate.prototype.cordinates);
-        this.x = newCoordinate.x;
-        this.y = newCoordinate.y;
+        const newCordinate = this.reduceAddition(Cordinate.prototype.cordinates);
+        this.x = newCordinate.x;
+        this.y = newCordinate.y;
       } else {
         throw new Error(ARG_ERROR);
       }
@@ -42,11 +42,11 @@ export default class Cordinate {
   }
 }
 Cordinate.prototype.cordinates = [];
-Cordinate.prototype.reduceAddition = (coordinates) => coordinates
-  .reduce((total, nextCoordinate) => {
+Cordinate.prototype.reduceAddition = (cordinates) => cordinates
+  .reduce((total, nextCordinate) => {
     Object.assign(total, {
-      x: total.x + nextCoordinate.x,
-      y: total.y + nextCoordinate.y
+      x: total.x + nextCordinate.x,
+      y: total.y + nextCordinate.y
     });
     return total;
   }, new Cordinate(0, 0));

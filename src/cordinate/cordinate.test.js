@@ -39,27 +39,27 @@ describe('Cordinate setup', () => {
   });
 });
 
-describe('Coordinate reduce addition method', () => {
+describe('Cordinate reduce addition method', () => {
   beforeEach(() => {
     Cordinate.prototype.cordinates = [];
   });
-  test('should reduce the array of Coordinates', () => {
-    const coordinate1 = new Cordinate(1, 10);
-    const coordinate2 = new Cordinate(2, 2);
-    const coordinate3 = new Cordinate(3, 3);
-    const arr = [coordinate1, coordinate2, coordinate3];
-    const newCoordinate = Cordinate.prototype.reduceAddition(arr);
-    expect(newCoordinate.x).toEqual(6);
-    expect(newCoordinate.y).toEqual(15);
+  test('should reduce the array of Cordinates', () => {
+    const cordinate1 = new Cordinate(1, 10);
+    const cordinate2 = new Cordinate(2, 2);
+    const cordinate3 = new Cordinate(3, 3);
+    const arr = [cordinate1, cordinate2, cordinate3];
+    const newCordinate = Cordinate.prototype.reduceAddition(arr);
+    expect(newCordinate.x).toEqual(6);
+    expect(newCordinate.y).toEqual(15);
   });
   test('should reduce and sum all the cordinates when no params are passed', () => {
-    const coordinate1 = new Cordinate();
-    const coordinate2 = new Cordinate(1, 3);
-    const coordinate3 = new Cordinate(4, 2);
-    const arr = [coordinate1, coordinate2, coordinate3];
-    const newCoordinate = Cordinate.prototype.reduceAddition(arr);
-    expect(newCoordinate.x).toEqual(5);
-    expect(newCoordinate.y).toEqual(5);
+    const cordinate1 = new Cordinate();
+    const cordinate2 = new Cordinate(1, 3);
+    const cordinate3 = new Cordinate(4, 2);
+    const arr = [cordinate1, cordinate2, cordinate3];
+    const newCordinate = Cordinate.prototype.reduceAddition(arr);
+    expect(newCordinate.x).toEqual(5);
+    expect(newCordinate.y).toEqual(5);
   });
 });
 
