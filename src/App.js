@@ -78,7 +78,7 @@ class App extends Component {
             <div className="col-md-12">
               <div className="new-coordinate-point-button-container">
                 <button
-                  className="btn btn-warning btn-block"
+                  className={`btn btn-warning btn-block ${x === null || y === null ? 'disabled' : ''}`}
                   type="button"
                   onClick={() => this.handleAddNewCoordinatePoint()}
                 >
@@ -114,9 +114,11 @@ class App extends Component {
           </div>
         </div>
         {this.renderCreateNewPoint()}
-        <div className="row">
+        <div className="row mt-2">
           <div className="col-md-8">
-            {this.renderCoordinate()}
+            <div className="alert alert-info">
+              {this.renderCoordinate()}
+            </div>
           </div>
         </div>
       </div>
