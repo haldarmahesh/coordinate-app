@@ -78,9 +78,9 @@ describe('Override + operator to add Cordinate obj', () => {
     const point1 = new Cordinate(1, 1);
     const point2 = new Cordinate(2, 2);
     const addedPoint = new Cordinate(point1 + point2);
-    expect(addedPoint.cordinates.length).toEqual(2);
-    expect(addedPoint.cordinates[0].x).toEqual(1);
-    expect(addedPoint.cordinates[1].y).toEqual(2);
+    expect(addedPoint.cordinates.length).toEqual(0);
+    expect(addedPoint.x).toEqual(3);
+    expect(addedPoint.y).toEqual(3);
   });
   test('should return the added cordinates when Obj is added', () => {
     const point1 = new Cordinate(1, 1);
@@ -100,6 +100,18 @@ describe('Override + operator to add Cordinate obj', () => {
     const addedPoint = new Cordinate(new Cordinate(10, 2) + new Cordinate(2, 1)
       + new Cordinate(3, 4));
     expect(addedPoint.toString()).toEqual('{15,7}');
+  });
+  test('should calculate addition for different set of cordinate obj', () => {
+    const point1 = new Cordinate(3, 4);
+    const point2 = new Cordinate(4, 2);
+    const point3 = new Cordinate(5, 1);
+    const addedPoint1 = new Cordinate(point1 + point2 + point3);
+    const addedPoint2 = new Cordinate(point1 + point2);
+    expect(addedPoint1.x).toEqual(12);
+    expect(addedPoint1.y).toEqual(7);
+
+    expect(addedPoint2.x).toEqual(7);
+    expect(addedPoint2.y).toEqual(6);
   });
 });
 describe('Static method matcher', () => {

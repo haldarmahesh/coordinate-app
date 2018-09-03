@@ -18,6 +18,7 @@ export default class Cordinate {
         const newCordinate = this.reduceAddition(Cordinate.prototype.cordinates);
         this.x = newCordinate.x;
         this.y = newCordinate.y;
+        Cordinate.prototype.cordinates = [];
       } else {
         throw new Error(ARG_ERROR);
       }
