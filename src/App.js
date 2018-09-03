@@ -76,14 +76,14 @@ class App extends Component {
     const { isCoordinateAdded, x, y } = this.state;
     const component = (
       <div className="row mt-2">
-        <div className="col-md-4">
+        <div className="col-md-4 col-sm-4">
           Add
           <b> minimum two </b>
           Coordinate points as argument
         </div>
-        <div className="col-md-2">
+        <div className="col-md-2 col-sm-5">
           <div className="row">
-            <div className="col-md-12">
+            <div className="col-md-12 ">
 
               <div className="input-group mb-3">
                 <div className="input-group-prepend">
@@ -123,7 +123,7 @@ class App extends Component {
     const { isCoordinateAdded, coordinatesArr } = this.state;
     const button = (
       <div className="row mt-2">
-        <div className="col-md-4">
+        <div className="col-md-4 col-sm-4">
           <button type="button" className="btn btn-danger" onClick={() => this.handleExecute()}>
             + Execute
           </button>
@@ -137,7 +137,7 @@ class App extends Component {
     const { isCoordinateAdded } = this.state;
     const alertBox = (
       <div className="row mt-2">
-        <div className="col-md-8">
+        <div className="col-md-8 col-sm-12">
           <div className="alert alert-info">
             <Fragment>{this.renderCoordinate()}</Fragment>
           </div>
@@ -151,7 +151,7 @@ class App extends Component {
     const { executeResult } = this.state;
     const component = (
       <div className="row mt-2">
-        <div className="col-md-4">
+        <div className="col-md-4 col-sm-4">
           <div className="alert alert-success" role="alert">
         Result is
             <br />
@@ -167,10 +167,10 @@ class App extends Component {
     return (
       <div className="container mt-3">
         <div className="row">
-          <div className="col-md-4">
+          <div className="col-md-4 col-sm-4">
             Start by creating new Coordinate
           </div>
-          <div className="col-md-2">
+          <div className="col-md-2 col-sm-4">
             <div className="new-coordinate-button-container">
               <button
                 className="btn btn-primary btn-block"
