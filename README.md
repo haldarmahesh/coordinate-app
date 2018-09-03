@@ -10,6 +10,9 @@ Clone this and run `npm install`.
 # Test cases
 To run the test cases run `npm run test`
 
+# Linting
+To check the lint you can run `npm run lint`
+
 # React app
 To start the app on localhost run `npm run start`
 
