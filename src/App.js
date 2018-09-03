@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Cordinate from './cordinate/Cordinate';
+import Coordinate from './coordinate/Coordinate';
 
 class App extends Component {
   render() {
-    const point1 = new Cordinate(1, 1);
-    const point2 = new Cordinate(2, 2);
-    const addedPoint = new Cordinate(point1 + point2);
+    const point1 = new Coordinate(1, 1);
+    const point2 = new Coordinate(2, 2);
+    const addedPoint = new Coordinate(point1 + point2);
     console.log(addedPoint);
     return (
       <div className="App">

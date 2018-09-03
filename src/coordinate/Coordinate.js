@@ -1,4 +1,4 @@
-export default class Cordinate {
+export default class Coordinate {
   constructor(...args) {
     const ARG_ERROR = 'Argument error, please provide valid params';
     const EXTRA_ARG_ERROR = 'Please pass 2 or less parameters.';
@@ -14,11 +14,11 @@ export default class Cordinate {
       if (typeof args[0] === 'number') {
         [this.x] = args;
         this.y = 0;
-      } else if (typeof args[0] === 'string' && Cordinate.matchesToString(args[0])) {
-        const newCordinate = this.reduceAddition(Cordinate.prototype.cordinates);
-        this.x = newCordinate.x;
-        this.y = newCordinate.y;
-        Cordinate.prototype.cordinates = [];
+      } else if (typeof args[0] === 'string' && Coordinate.matchesToString(args[0])) {
+        const noewCoordinate = this.reduceAddition(Coordinate.prototype.coordinates);
+        this.x = noewCoordinate.x;
+        this.y = noewCoordinate.y;
+        Coordinate.prototype.coordinates = [];
       } else {
         throw new Error(ARG_ERROR);
       }
@@ -29,7 +29,7 @@ export default class Cordinate {
   }
 
   valueOf() {
-    Cordinate.prototype.cordinates.push(this);
+    Coordinate.prototype.coordinates.push(this);
     return this;
   }
 
@@ -42,12 +42,12 @@ export default class Cordinate {
     return TO_STR_REGEX.test(str);
   }
 }
-Cordinate.prototype.cordinates = [];
-Cordinate.prototype.reduceAddition = (cordinates) => cordinates
-  .reduce((total, nextCordinate) => {
+Coordinate.prototype.coordinates = [];
+Coordinate.prototype.reduceAddition = (coordinates) => coordinates
+  .reduce((total, nextCoordinate) => {
     Object.assign(total, {
-      x: total.x + nextCordinate.x,
-      y: total.y + nextCordinate.y
+      x: total.x + nextCoordinate.x,
+      y: total.y + nextCoordinate.y
     });
     return total;
-  }, new Cordinate(0, 0));
+  }, new Coordinate(0, 0));
