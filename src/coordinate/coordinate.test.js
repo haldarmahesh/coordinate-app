@@ -122,6 +122,17 @@ describe('Override + operator to add Coordinate obj', () => {
     expect(addedPoint1.toString()).toEqual('{12,7}');
     expect(addedPoint2.toString()).toEqual('{7,6}');
   });
+  test('should pass the given example 1 and example 2 from the pdf example', () => {
+    expect(new Coordinate(
+      new Coordinate(30, 90)
+      + new Coordinate(70, 150)
+    ).toString()).toEqual('{100,240}');
+    expect(new Coordinate(
+      new Coordinate(250, 10)
+      + new Coordinate(60, 430)
+      + new Coordinate(80, 0)
+    ).toString()).toEqual('{390,440}');
+  });
 });
 describe('Static method matcher', () => {
   test('should return true when correct this Obj toString is passed', () => {
