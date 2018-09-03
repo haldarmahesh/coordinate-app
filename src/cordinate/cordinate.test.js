@@ -113,6 +113,15 @@ describe('Override + operator to add Cordinate obj', () => {
     expect(addedPoint2.x).toEqual(7);
     expect(addedPoint2.y).toEqual(6);
   });
+  test('should return the string format of values when tostring is called after addition', () => {
+    const point1 = new Cordinate(3, 4);
+    const point2 = new Cordinate(4, 2);
+    const point3 = new Cordinate(5, 1);
+    const addedPoint1 = new Cordinate(point1 + point2 + point3);
+    const addedPoint2 = new Cordinate(point1 + point2);
+    expect(addedPoint1.toString()).toEqual('{12,7}');
+    expect(addedPoint2.toString()).toEqual('{7,6}');
+  });
 });
 describe('Static method matcher', () => {
   test('should return true when correct this Obj toString is passed', () => {
