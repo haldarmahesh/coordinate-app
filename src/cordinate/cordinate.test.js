@@ -1,6 +1,7 @@
 import Cordinate from './Cordinate';
 
 describe('Cordinate setup', () => {
+  const arugmentErr = 'Argument error, please provide valid params';
   test('should accept 2 args x and y in constructor', () => {
     const cordinate1 = new Cordinate(10, 20);
     expect(cordinate1.x).toEqual(10);
@@ -23,6 +24,18 @@ describe('Cordinate setup', () => {
   test('should return cordinated with curly braces when toString is called', () => {
     const cordinate1 = new Cordinate(10, 20);
     expect(cordinate1.toString()).toEqual('{10,20}');
+  });
+  test('should throw error when invalid string arguments is passed', () => {
+    const cordinate1 = () => new Cordinate('asdasd');
+    expect(cordinate1).toThrowError(arugmentErr);
+  });
+  test('should throw error when invalid arguments, array is passed', () => {
+    const cordinate1 = () => new Cordinate([23, 45]);
+    expect(cordinate1).toThrowError(arugmentErr);
+  });
+  test('should throw error when invalid arguments, array and string is passed', () => {
+    const cordinate1 = () => new Cordinate([23, 45], 'asdas');
+    expect(cordinate1).toThrowError(arugmentErr);
   });
 });
 
