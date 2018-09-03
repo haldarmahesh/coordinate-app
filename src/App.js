@@ -9,7 +9,8 @@ class App extends Component {
       isCoordinateAdded: false,
       coordinatesArr: [],
       x: null,
-      y: null
+      y: null,
+      executeResult: ''
     };
   }
 
@@ -34,6 +35,18 @@ class App extends Component {
       coordinatesArr: [...coordinatesArr, newCoordinate]
     });
   }
+
+  handleExecute() {
+    const { coordinatesArr } = this.state;
+    const result = new Coordinate(coordinatesArr.reduce((total, next) => {
+      total += next; // eslint-disable-line no-param-reassign
+      return total;
+    }, new Coordinate(0, 0)));
+    this.setState({
+      executeResult: result.toString()
+    });
+  }
+
 
   reduceArgsToString() {
     const { coordinatesArr } = this.state;
@@ -100,7 +113,7 @@ class App extends Component {
     const button = (
       <div className="row mt-2">
         <div className="col-md-4">
-          <button type="button" className="btn btn-danger">
+          <button type="button" className="btn btn-danger" onClick={() => this.handleExecute()}>
             + Execute
           </button>
         </div>
@@ -121,6 +134,20 @@ class App extends Component {
       </div>
     );
     return isCoordinateAdded ? alertBox : null;
+  }
+
+  renderShowResult() {
+    const { executeResult } = this.state;
+    const component = (
+      <div className="row mt-2">
+        <div className="col-md-4">
+        Result is
+          <br />
+          { executeResult }
+        </div>
+      </div>
+    );
+    return executeResult.length > 0 ? component : null;
   }
 
   render() {
@@ -145,6 +172,7 @@ class App extends Component {
         {this.renderCreateNewPoint()}
         {this.renderCoordinateStrParams()}
         {this.renderExecuteButton()}
+        {this.renderShowResult()}
       </div>
     );
   }

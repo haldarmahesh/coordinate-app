@@ -16,9 +16,10 @@ it('renders without crashing', () => {
 });
 
 describe('App component setup', () => {
-  test('should start with false CoordinateAdded', () => {
+  test('should start with false CoordinateAdded and empty executeResult', () => {
     const wrapper = shallow(<App />);
     expect(wrapper.state().isCoordinateAdded).toEqual(false);
+    expect(wrapper.state().executeResult.length).toEqual(0);
   });
   test('should start with null Coordinates values', () => {
     const wrapper = shallow(<App />);
@@ -166,5 +167,27 @@ describe('App component setup', () => {
       coordinatesArr: [point1, point2]
     });
     expect(typeof wrapper.instance().reduceArgsToString()).toEqual('string');
+  });
+
+  test('should return null when renderShowResult is called and nothing is in executeresul', () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper.instance().renderShowResult()).toEqual(null);
+  });
+  test('should return object when renderShowResult is called and there is a message', () => {
+    const wrapper = shallow(<App />);
+    wrapper.setState({
+      executeResult: '{12,23'
+    });
+    expect(typeof wrapper.instance().renderShowResult()).toEqual('object');
+  });
+  test('should update the state executeResult when handleExecute is called', () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper.state().executeResult.length).toEqual(0);
+    wrapper.setState({
+      coordinatesArr: [new Coordinate(1, 2), new Coordinate(3, 4)]
+    });
+
+    wrapper.instance().handleExecute();
+    expect(wrapper.state().executeResult.length > 0).toEqual(true);
   });
 });

@@ -20,7 +20,7 @@
     "react/jsx-no-bind": "off",
     "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
     "react/prefer-stateless-function": "off"
-    
+  
   },
   "plugins": [
     "promise",
